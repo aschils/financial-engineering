@@ -1,6 +1,6 @@
 """
-Compute price of an european call option using the multi-period binomial model. Parameters of the binomial model
-are derived from provided parameters of a Black-Scholes model.
+Compute price of a european call option using the multi-period binomial model approximating a Black Scholes model.
+Parameters of the binomial model are derived from provided parameters of a Black-Scholes model.
 """
 
 import math
