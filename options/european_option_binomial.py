@@ -1,3 +1,8 @@
+"""
+Compute price of an european call option using the multi-period binomial model. Parameters of the binomial model
+are derived from provided parameters of a Black-Scholes model.
+"""
+
 import math
 
 from framework.binomial_model import multi_period_binomial_tree as m
@@ -15,7 +20,7 @@ if __name__ == "__main__":
     c = R-math.exp((r_bs-c_bs)*T/n)
     u = math.exp(sigma_bs*math.sqrt(T/n))
 
-    asset_t = m.asset_tree(s0, u, n)
-    option_t = m.option_tree(asset_t, m.call_expiration_price, K, n, u, R, c)
+    asset_t = m.build_asset_tree(s0, u, n)
+    option_t = m.build_option_tree(asset_t, m.call_expiration_price, K, n, u, R, c)
     for i, level in enumerate(option_t):
         print(f"Step {i}: {level}")
