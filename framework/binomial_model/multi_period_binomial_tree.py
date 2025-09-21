@@ -14,8 +14,9 @@ params:
 - n: number of periods
 returns: multi period binomial tree up to period 'n' for the asset
 """
-def build_asset_tree(s0: float, u: float, n: int):
-    d = 1.0/u
+def build_asset_tree(s0: float, u: float, n: int, d: float=None):
+    if d is None:
+        d = 1.0/u
     asset_tree = [[s0*u**j*d**(t-j) for j in range(t+1)] for t in range(n+1)]
     return asset_tree
 
