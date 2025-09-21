@@ -30,8 +30,14 @@ params:
 - interest_rate
 - dividend: underlying asset dividend, 0 if no dividend
 """
-def build_option_tree(asset_tree: List[List[float]], expiration_price: Callable[[float, float], float], strike_price: float, n: int,
-                      u: float, interest_rate: float, dividend: float):
+def build_option_tree(
+        asset_tree: List[List[float]],
+        expiration_price: Callable[[float, float], float],
+        strike_price: float,
+        n: int,
+        u: float,
+        interest_rate: float,
+        dividend: float):
     d = 1/u
     option_tree = [[0.0 for j in range(t+1)] for t in range(n+1)]
     option_tree[-1] = [expiration_price(s, strike_price) for s in asset_tree[-1]]
